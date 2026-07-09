@@ -153,6 +153,31 @@ def handle_crawl(args):
         # 2. For each case, fetch full details, clean, validate, and write nested JSON
         for case_stub in all_cases_metadata:
             cnr = case_stub["cnr"]
+            
+            # Incremental Scraping: check if case JSON already exists and is disposed
+            case_file = output_dir / f"{cnr}.json"
+            if case_file.exists():
+                try:
+                    with open(case_file, "r", encoding="utf-8") as f:
+                        existing_data = json.load(f)
+                    
+                    status = existing_data.get("status", "").lower()
+                    outcome = existing_data.get("outcome_classification", {}).get("outcome", "").lower()
+                    
+                    is_disposed = ("disposed" in status or 
+                                   "decreed" in status or 
+                                   "dismissed" in status or 
+                                   (outcome != "pending" and outcome != ""))
+                                   
+                    if is_disposed:
+                        console.print(f" [SKIP] Case {case_stub['case_number']} (CNR: {cnr}) is already disposed and cached locally.")
+                        # Parse back to Pydantic object
+                        validated_case = CaseRecordSchema(**existing_data)
+                        cases_to_save.append(validated_case)
+                        continue
+                except Exception as e:
+                    logger.warning(f"Failed parsing local cache file for {cnr}, will re-crawl: {e}")
+                    
             try:
                 case_html = pipeline["scraper"].get_case_details(cnr)
                 metrics.log_scrape(True)
