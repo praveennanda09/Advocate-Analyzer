@@ -1,0 +1,28 @@
+{
+    "cnr": "APGD050066662024",
+    "case_number": "O.S. 22/2024",
+    "filing_date": "2024-04-10",
+    "registration_date": null,
+    "disposal_date": null,
+    "current_stage": "",
+    "status": "Pending",
+    "court": "Senior Civil Court, Amalapuram",
+    "judge": "K. Sree Rama Murthy",
+    "case_category": "",
+    "petitioner": "Client X",
+    "petitioner_advocate": "Kuchi Rajeswara Sastry",
+    "respondent": "Opponent Y",
+    "respondent_advocate": "",
+    "acts": [],
+    "hearing_history": [],
+    "orders": [],
+    "metadata": {
+        "filing_date_raw": "10-04-2024",
+        "registration_date_raw": "",
+        "disposal_date_raw": ""
+    },
+    "outcome_classification": {
+        "outcome": "Pending",
+        "reason": "Case is currently active."
+    }
+}

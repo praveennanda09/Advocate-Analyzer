@@ -1,0 +1,152 @@
+{
+    "name": "Kuchi Rajeswara Sastry",
+    "registration_number": "AP/1042/1971",
+    "bar_council": "Bar Council of Andhra Pradesh",
+    "primary_courts": "Senior Civil Court Amalapuram, Junior Civil Court Amalapuram, Rajahmundry Courts",
+    "cases_listing": [
+        {
+            "cnr": "APGD050012342021",
+            "case_number": "O.S. 104/2021",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Garapati Venkata Nagendra Prasad Vs. Garapati Venkta Ramakrishna Rao",
+            "filing_date_raw": "15-04-2021",
+            "status": "Disposed"
+        },
+        {
+            "cnr": "APGD050024682022",
+            "case_number": "O.S. 45/2022",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Konda Surya Rao Vs. Konda Naga Lakshmi",
+            "filing_date_raw": "12-05-2022",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APHC010045671974",
+            "case_number": "W.P. 5678/1974",
+            "court": "High Court of Andhra Pradesh",
+            "parties": "Krishna Coconut Company Vs. Market Committee",
+            "filing_date_raw": "10-10-1974",
+            "status": "Disposed"
+        },
+        {
+            "cnr": "APGD050011112023",
+            "case_number": "O.S. 12/2023",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Venkata Prasad Vs. Ramakrishna Rao",
+            "filing_date_raw": "10-01-2023",
+            "status": "Disposed"
+        },
+        {
+            "cnr": "APGD050022222023",
+            "case_number": "O.S. 88/2023",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Surya Rao Vs. Naga Lakshmi",
+            "filing_date_raw": "12-03-2023",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APHC010033331976",
+            "case_number": "W.P. 1234/1976",
+            "court": "High Court of Andhra Pradesh",
+            "parties": "Sastry and Sons Vs. Market Committee",
+            "filing_date_raw": "15-08-1976",
+            "status": "Disposed"
+        },
+        {
+            "cnr": "APGD050044442024",
+            "case_number": "O.S. 11/2024",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Rao Vs. Sastry",
+            "filing_date_raw": "01-02-2024",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050055552024",
+            "case_number": "O.S. 15/2024",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Plaintiff A Vs. Defendant B",
+            "filing_date_raw": "15-03-2024",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050066662024",
+            "case_number": "O.S. 22/2024",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Client X Vs. Opponent Y",
+            "filing_date_raw": "10-04-2024",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050077772024",
+            "case_number": "O.S. 35/2024",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "User Alpha Vs. User Beta",
+            "filing_date_raw": "20-05-2024",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050088882025",
+            "case_number": "O.S. 40/2025",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Seller S Vs. Buyer B",
+            "filing_date_raw": "05-01-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050099992025",
+            "case_number": "O.S. 45/2025",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Owner O Vs. Tenant T",
+            "filing_date_raw": "12-02-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050010102025",
+            "case_number": "O.S. 50/2025",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Petitioner G Vs. Respondent H",
+            "filing_date_raw": "18-03-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050011122025",
+            "case_number": "O.S. 60/2025",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Husband H Vs. Wife W",
+            "filing_date_raw": "25-04-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050012132025",
+            "case_number": "O.S. 70/2025",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Partner P Vs. Partner D",
+            "filing_date_raw": "30-05-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050013142025",
+            "case_number": "O.S. 80/2025",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Creditor C Vs. Debtor D",
+            "filing_date_raw": "15-06-2025",
+            "status": "Pending"
+        },
+        {
+            "cnr": "APGD050014152026",
+            "case_number": "O.S. 90/2026",
+            "court": "Senior Civil Court, Amalapuram",
+            "parties": "Lender L Vs. Borrower B",
+            "filing_date_raw": "10-01-2026",
+            "status": "Disposed"
+        },
+        {
+            "cnr": "APGD050015162026",
+            "case_number": "O.S. 100/2026",
+            "court": "Junior Civil Court, Amalapuram",
+            "parties": "Brother A Vs. Sister B",
+            "filing_date_raw": "22-02-2026",
+            "status": "Disposed"
+        }
+    ]
+}

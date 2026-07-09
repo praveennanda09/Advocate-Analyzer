@@ -1,0 +1,10 @@
+{
+    "timestamp": "2026-07-09T12:51:25.458544",
+    "elapsed_seconds": 0.24,
+    "pages_scraped": 14,
+    "failed_requests": 0,
+    "cases_parsed": 12,
+    "database_writes": 12,
+    "success_rate": 100.0,
+    "errors": []
+}

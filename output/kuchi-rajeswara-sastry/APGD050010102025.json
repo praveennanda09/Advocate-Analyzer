@@ -1,0 +1,28 @@
+{
+    "cnr": "APGD050010102025",
+    "case_number": "O.S. 50/2025",
+    "filing_date": "2025-03-18",
+    "registration_date": null,
+    "disposal_date": null,
+    "current_stage": "",
+    "status": "Pending",
+    "court": "Senior Civil Court, Amalapuram",
+    "judge": "",
+    "case_category": "",
+    "petitioner": "Petitioner G",
+    "petitioner_advocate": "Kuchi Rajeswara Sastry",
+    "respondent": "Respondent H",
+    "respondent_advocate": "",
+    "acts": [],
+    "hearing_history": [],
+    "orders": [],
+    "metadata": {
+        "filing_date_raw": "18-03-2025",
+        "registration_date_raw": "",
+        "disposal_date_raw": ""
+    },
+    "outcome_classification": {
+        "outcome": "Pending",
+        "reason": "Case is currently active."
+    }
+}

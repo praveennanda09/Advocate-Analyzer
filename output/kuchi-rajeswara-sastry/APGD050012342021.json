@@ -1,0 +1,39 @@
+{
+    "cnr": "APGD050012342021",
+    "case_number": "O.S. 104/2021",
+    "filing_date": "2021-04-15",
+    "registration_date": "2021-04-18",
+    "disposal_date": "2023-10-12",
+    "current_stage": "Case Disposed",
+    "status": "Disposed (Allowed / Decreed with Relief)",
+    "court": "Senior Civil Court, Amalapuram",
+    "judge": "K. Sree Rama Murthy",
+    "case_category": "Original Suit (O.S.)",
+    "petitioner": "Garapati Venkata Nagendra Prasad",
+    "petitioner_advocate": "Kuchi Rajeswara Sastry",
+    "respondent": "Garapati Venkta Ramakrishna Rao",
+    "respondent_advocate": "P.S. Rao",
+    "acts": [],
+    "hearing_history": [
+        {
+            "hearing_date": "2021-05-10",
+            "stage": "First Hearing",
+            "business": "Summons ordered"
+        },
+        {
+            "hearing_date": "2023-10-12",
+            "stage": "Final Argument",
+            "business": "Suit Decreed with costs."
+        }
+    ],
+    "orders": [],
+    "metadata": {
+        "filing_date_raw": "15-04-2021",
+        "registration_date_raw": "18-04-2021",
+        "disposal_date_raw": "12-10-2023"
+    },
+    "outcome_classification": {
+        "outcome": "Allowed / Decreed",
+        "reason": "Case record explicitly states: 'Allowed' or 'Decreed'."
+    }
+}

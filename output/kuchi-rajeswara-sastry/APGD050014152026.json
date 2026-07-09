@@ -1,0 +1,28 @@
+{
+    "cnr": "APGD050014152026",
+    "case_number": "O.S. 90/2026",
+    "filing_date": "2026-01-10",
+    "registration_date": null,
+    "disposal_date": "2026-05-15",
+    "current_stage": "",
+    "status": "Disposed (Allowed / Decreed)",
+    "court": "Senior Civil Court, Amalapuram",
+    "judge": "",
+    "case_category": "",
+    "petitioner": "Lender L",
+    "petitioner_advocate": "Kuchi Rajeswara Sastry",
+    "respondent": "Borrower B",
+    "respondent_advocate": "",
+    "acts": [],
+    "hearing_history": [],
+    "orders": [],
+    "metadata": {
+        "filing_date_raw": "10-01-2026",
+        "registration_date_raw": "",
+        "disposal_date_raw": "15-05-2026"
+    },
+    "outcome_classification": {
+        "outcome": "Allowed / Decreed",
+        "reason": "Case record explicitly states: 'Allowed' or 'Decreed'."
+    }
+}

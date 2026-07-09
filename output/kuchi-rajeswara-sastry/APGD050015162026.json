@@ -1,0 +1,28 @@
+{
+    "cnr": "APGD050015162026",
+    "case_number": "O.S. 100/2026",
+    "filing_date": "2026-02-22",
+    "registration_date": null,
+    "disposal_date": "2026-06-20",
+    "current_stage": "",
+    "status": "Disposed (Allowed / Decreed)",
+    "court": "Junior Civil Court, Amalapuram",
+    "judge": "",
+    "case_category": "",
+    "petitioner": "Brother A",
+    "petitioner_advocate": "Kuchi Rajeswara Sastry",
+    "respondent": "Sister B",
+    "respondent_advocate": "",
+    "acts": [],
+    "hearing_history": [],
+    "orders": [],
+    "metadata": {
+        "filing_date_raw": "22-02-2026",
+        "registration_date_raw": "",
+        "disposal_date_raw": "20-06-2026"
+    },
+    "outcome_classification": {
+        "outcome": "Allowed / Decreed",
+        "reason": "Case record explicitly states: 'Allowed' or 'Decreed'."
+    }
+}
