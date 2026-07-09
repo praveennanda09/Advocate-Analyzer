@@ -163,6 +163,27 @@ def handle_crawl(args):
         all_cases = pipeline["db"].list_cases()
         pipeline["parquet"].save_all(all_cases)
         
+        # 4b. Save to separate advocate file in output/ directory
+        import json
+        output_dir = Path("output")
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        file_name = advocate_id.lower().replace(" ", "_") + ".json"
+        output_file = output_dir / file_name
+        
+        advocate_export = {
+            "name": name,
+            "registration_number": reg_number,
+            "bar_council": bar_council,
+            "primary_courts": primary_courts,
+            "cases": [c.model_dump() for c in cases_to_save]
+        }
+        
+        with open(output_file, "w", encoding="utf-8") as f:
+            json.dump(advocate_export, f, indent=4)
+            
+        console.print(f" Saved structured advocate profile to: [bold cyan]{output_file}[/bold cyan]")
+        
         # 5. Build vector store chunks & reindex
         chunks = Chunker.chunk_all_cases(cases_to_save)
         pipeline["vector_store"].add_documents(chunks)
