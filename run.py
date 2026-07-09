@@ -130,9 +130,27 @@ def handle_crawl(args):
                     
         console.print(f"Discovered [green]{len(all_cases_metadata)}[/green] total cases across all pages.")
         
+        # Define output directory for the advocate
+        import json
+        adv_folder_name = advocate_id.lower().replace(" ", "_")
+        output_dir = Path("output") / adv_folder_name
+        output_dir.mkdir(parents=True, exist_ok=True)
+        
+        # Save general advocate profile listing (profile.json)
+        profile_export = {
+            "name": name,
+            "registration_number": reg_number,
+            "bar_council": bar_council,
+            "primary_courts": primary_courts,
+            "cases_listing": all_cases_metadata
+        }
+        with open(output_dir / "profile.json", "w", encoding="utf-8") as f:
+            json.dump(profile_export, f, indent=4)
+        console.print(f" Saved advocate overview profile to: [bold cyan]{output_dir / 'profile.json'}[/bold cyan]")
+
         cases_to_save = []
         
-        # 2. For each case, fetch full details, clean, validate
+        # 2. For each case, fetch full details, clean, validate, and write nested JSON
         for case_stub in all_cases_metadata:
             cnr = case_stub["cnr"]
             try:
@@ -149,12 +167,24 @@ def handle_crawl(args):
                 validated_case = CaseRecordSchema(**clean_case)
                 cases_to_save.append(validated_case)
                 
+                # Classify outcome ("who won") using AnalyticsEngine
+                from analytics.analytics_engine import AnalyticsEngine
+                outcome_info = AnalyticsEngine.classify_outcome(validated_case)
+                
+                # Export case details with outcome details
+                case_dict = validated_case.model_dump()
+                case_dict["outcome_classification"] = outcome_info
+                
+                # Save individual case details to output/{advocate_name}/{cnr}.json
+                with open(output_dir / f"{cnr}.json", "w", encoding="utf-8") as f:
+                    json.dump(case_dict, f, indent=4)
+                
                 # Save to backends
                 pipeline["db"].save_case(validated_case)
                 pipeline["jsonl"].save_case(validated_case)
                 metrics.log_db_write()
                 
-                console.print(f" Successfully processed Case: [green]{validated_case.case_number}[/green] (CNR: {validated_case.cnr})")
+                console.print(f" Successfully processed Case: [green]{validated_case.case_number}[/green] (CNR: {validated_case.cnr}) -> Saved to {cnr}.json")
             except Exception as e:
                 console.print(f" Failed to process Case CNR [red]{cnr}[/red]: {e}")
                 metrics.log_error(f"Failed case cnr {cnr}: {str(e)}")
@@ -162,27 +192,6 @@ def handle_crawl(args):
         # 4. Save to Parquet
         all_cases = pipeline["db"].list_cases()
         pipeline["parquet"].save_all(all_cases)
-        
-        # 4b. Save to separate advocate file in output/ directory
-        import json
-        output_dir = Path("output")
-        output_dir.mkdir(parents=True, exist_ok=True)
-        
-        file_name = advocate_id.lower().replace(" ", "_") + ".json"
-        output_file = output_dir / file_name
-        
-        advocate_export = {
-            "name": name,
-            "registration_number": reg_number,
-            "bar_council": bar_council,
-            "primary_courts": primary_courts,
-            "cases": [c.model_dump() for c in cases_to_save]
-        }
-        
-        with open(output_file, "w", encoding="utf-8") as f:
-            json.dump(advocate_export, f, indent=4)
-            
-        console.print(f" Saved structured advocate profile to: [bold cyan]{output_file}[/bold cyan]")
         
         # 5. Build vector store chunks & reindex
         chunks = Chunker.chunk_all_cases(cases_to_save)

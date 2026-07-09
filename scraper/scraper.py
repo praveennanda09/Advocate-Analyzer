@@ -56,7 +56,7 @@ class GenericScraper:
                 raise ValueError(f"Case with CNR '{cnr_number}' not found in mock database.")
             return CASE_DETAILS[cnr_number]
 
-        url = f"https://ecourtsindia.com/case/{cnr_number}"
+        url = f"https://ecourtsindia.com/cnr/{cnr_number}"
         
         if self.mode == "http":
             try:
