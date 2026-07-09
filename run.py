@@ -93,18 +93,47 @@ def handle_crawl(args):
     metrics = pipeline["metrics"]
     
     try:
-        # 1. Fetch advocate profile html
-        profile_html = pipeline["scraper"].get_lawyer_profile(advocate_id)
-        metrics.log_scrape(True)
+        # 1. Fetch advocate profile html recursively (following pagination)
+        visited_urls = {advocate_id}
+        urls_to_visit = [advocate_id]
         
-        # 2. Parse basic profile metadata & case listing
-        raw_profile = HTMLParser.parse_lawyer_profile(profile_html)
-        console.print(f"Discovered [green]{len(raw_profile['cases'])}[/green] cases listed on profile.")
+        all_cases_metadata = []
+        name = ""
+        reg_number = ""
+        bar_council = ""
+        primary_courts = ""
+        
+        while urls_to_visit:
+            current_url = urls_to_visit.pop(0)
+            console.print(f"Fetching profile page: [yellow]{current_url}[/yellow]...")
+            profile_html = pipeline["scraper"].get_lawyer_profile(current_url)
+            metrics.log_scrape(True)
+            
+            raw_profile = HTMLParser.parse_lawyer_profile(profile_html)
+            
+            # Record basic metadata from the first page
+            if not name:
+                name = raw_profile["name"]
+                reg_number = raw_profile["registration_number"]
+                bar_council = raw_profile["bar_council"]
+                primary_courts = raw_profile["primary_courts"]
+                
+            all_cases_metadata.extend(raw_profile["cases"])
+            
+            # Find and queue pagination links
+            for link in raw_profile.get("pagination_links", []):
+                # Clean or resolve relative links to keys (e.g. kuchi-rajeswara-sastry?page=2)
+                link_key = link.split("/")[-1] if "/" in link else link
+                if link_key not in visited_urls and len(visited_urls) < pipeline["config"].crawler.max_depth * 5:
+                    visited_urls.add(link_key)
+                    urls_to_visit.append(link_key)
+                    
+        console.print(f"Discovered [green]{len(all_cases_metadata)}[/green] total cases across all pages.")
         
         cases_to_save = []
         
-        # 3. For each case, fetch full details, clean, validate
-        for case_stub in raw_profile["cases"]:
+        # 2. For each case, fetch full details, clean, validate
+        for case_stub in all_cases_metadata:
             cnr = case_stub["cnr"]
             try:
                 case_html = pipeline["scraper"].get_case_details(cnr)

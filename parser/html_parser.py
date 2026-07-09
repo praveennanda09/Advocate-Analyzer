@@ -58,13 +58,22 @@ class HTMLParser:
                             "status": status
                         })
                         
+        # Parse pagination links
+        pagination_links = []
+        pagination_div = soup.find("div", class_="pagination")
+        if pagination_div:
+            for a in pagination_div.find_all("a", href=True):
+                pagination_links.append(a["href"])
+                
         return {
             "name": name,
             "registration_number": reg_number,
             "bar_council": bar_council,
             "primary_courts": primary_courts,
-            "cases": cases
+            "cases": cases,
+            "pagination_links": pagination_links
         }
+
 
     @staticmethod
     def parse_case_details(html_content: str) -> Dict[str, Any]:

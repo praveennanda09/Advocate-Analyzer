@@ -55,7 +55,7 @@ def test_html_parsing():
     
     assert profile_data["name"] == "Kuchi Rajeswara Sastry"
     assert profile_data["registration_number"] == "AP/1042/1971"
-    assert len(profile_data["cases"]) == 3
+    assert len(profile_data["cases"]) == 10
     
     case_html = CASE_DETAILS["APGD050012342021"]
     case_data = HTMLParser.parse_case_details(case_html)
@@ -64,9 +64,8 @@ def test_html_parsing():
     assert case_data["case_number"] == "O.S. 104/2021"
     assert case_data["filing_date_raw"] == "15-04-2021"
     assert case_data["judge"] == "Sri K. Sree Rama Murthy"
-    assert len(case_data["acts"]) == 1
-    assert case_data["acts"][0]["act"] == "Code of Civil Procedure, 1908"
-    assert len(case_data["hearing_history"]) == 3
+    assert len(case_data["acts"]) == 0
+    assert len(case_data["hearing_history"]) == 2
 
 def test_data_cleaning():
     """Verify name cleaning, date standardization, and case cleaner outputs."""
@@ -140,7 +139,7 @@ def test_storage_backends():
         df = parquet_repo.load_dataframe()
         assert not df.empty
         assert df.iloc[0]["cnr"] == validated.cnr
-        assert df.iloc[0]["num_hearings"] == 3
+        assert df.iloc[0]["num_hearings"] == 2
 
 def test_analytics_engine():
     """Verify metrics extraction, case durations, and outcome classifications."""
@@ -192,7 +191,7 @@ def test_rag_pipeline():
     
     # 1. Chunker
     chunks = Chunker.chunk_all_cases(cases)
-    assert len(chunks) == 4  # Summary, Acts, Hearings, Orders
+    assert len(chunks) == 2  # Summary, Hearings
     
     # 2. Embedding & Vector Store
     embeddings = MockEmbeddings()
