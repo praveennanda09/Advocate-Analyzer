@@ -1,0 +1,49 @@
+# eCourts India Legal Knowledge Base & RAG Platform Configuration
+
+crawler:
+  # Mode options: "mock" (default for offline sandbox testing), "http", "browser"
+  mode: "mock"
+  # Default target advocate profile URL
+  default_target: "https://ecourtsindia.com/lawyer/kuchi-rajeswara-sastry"
+  # Rate limit delay between requests in seconds (ignored in mock mode)
+  rate_limit_delay: 3.0
+  # Crawl depth (for discovering cases linked, appeal histories, etc.)
+  max_depth: 2
+  # Connection timeout in seconds
+  timeout: 30
+  # Request cache duration in seconds (86400 = 24 hours)
+  cache_ttl: 86400
+
+storage:
+  # Base directory for saving crawled files
+  base_dir: "data"
+  # SQLite database path
+  db_path: "data/legal_kb.db"
+  # JSON dump file path
+  json_path: "data/raw_cases.jsonl"
+  # Parquet output file path
+  parquet_path: "data/analytics_cases.parquet"
+
+rag:
+  # Vector database type: "faiss" or "chroma"
+  vector_db: "faiss"
+  # Directory where vector index is stored
+  vector_db_dir: "data/vector_store"
+  # Text chunk size (characters)
+  chunk_size: 500
+  # Text chunk overlap (characters)
+  chunk_overlap: 50
+  # Embedded model provider: "mock", "gemini", "openai", "sentence-transformers"
+  embeddings_provider: "mock"
+  # LLM provider: "mock", "gemini", "openai", "claude", "ollama"
+  llm_provider: "mock"
+  # Model name
+  llm_model: "gemini-1.5-flash"
+  # Temperature for RAG generation
+  temperature: 0.2
+
+monitoring:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_level: "INFO"
+  # File path to save logs
+  log_file: "data/scraper.log"
